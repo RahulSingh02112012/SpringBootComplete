@@ -1,5 +1,4 @@
-package com.example.springsecurityJPA.springsecurityjpa;
-
+package com.example.springsecurity.springsecurityconfiguration;
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +8,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.example.springsecurityJPA")
-@EntityScan("com.example.springsecurityJPA")
+
+//@EnableJpaRepositories(basePackages = "com.example.springsecurity")
+//@EntityScan("com.example.springsecurityJPA")
+@SpringBootApplication(scanBasePackages = "com.example.springsecurity")
 public class SpringSecurityJpaApplication {
 
 	public static void main(String[] args) {

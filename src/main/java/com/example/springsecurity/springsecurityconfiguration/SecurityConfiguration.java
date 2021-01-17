@@ -1,5 +1,7 @@
-package com.example.springsecurityJPA.springsecurityjpa;
+package com.example.springsecurity.springsecurityconfiguration;
 
+
+import javax.sql.DataSource;
 
 import org.h2.server.web.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,7 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
-	UserDetailsService userDetailsService;
+	DataSource dataSource;
 	
 	/*
 	 * @Bean public DaoAuthenticationProvider authenticationProvider() {
@@ -32,9 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// auth.authenticationProvider(authenticationProvider());
-		System.out.println("Entered Auth Manager");
+		/*System.out.println("Entered Auth Manager");
 		auth.userDetailsService(userDetailsService);
-		System.out.println("Auth done");
+		System.out.println("Auth done");*/
+		
+		//PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		auth.jdbcAuthentication().dataSource(dataSource);
 	}
 	
 	@Override

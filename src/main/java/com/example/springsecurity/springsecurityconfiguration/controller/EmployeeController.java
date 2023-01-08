@@ -35,7 +35,6 @@ public class EmployeeController
     }
  
     @GetMapping("/{id}")
-    //This is test comment
     public ResponseEntity<EmployeeEntity> getEmployeeById(@PathVariable("id") Long id)
                                                     throws RecordNotFoundException {
         EmployeeEntity entity = service.getEmployeeById(id);

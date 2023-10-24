@@ -17,7 +17,7 @@ public class EmployeeService {
      
     @Autowired
     EmployeeRepository repository;
-     
+     // Need to add Entities
     public List<EmployeeEntity> getAllEmployees()
     {
         List<EmployeeEntity> employeeList = repository.findAll();
